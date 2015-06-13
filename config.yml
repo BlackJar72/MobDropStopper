@@ -1,0 +1,11 @@
+## YAML Template.
+# Place the names of the item to remove from drops in the remove section.  Valid 
+# values can be found at: 
+# https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+remove: 
+    - null
+# Items to replace, forma is:
+# original: replacement
+replace:
+    
+    

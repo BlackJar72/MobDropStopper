@@ -1,0 +1,5 @@
+## YAML Template.
+name: MobDropStopper
+main: jaredbgreat.dropstopper.DropStopper
+version: 1.0.0
+description: Removes or replaces items in mob drops
