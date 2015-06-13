@@ -3,3 +3,6 @@ This is a simple plugin which can remove or replace items dropped by mobs.  It w
 Unlike some plugins that work by mob, this works by the drop.  List the items you don't want dropped, or the remove/replace pairs, and it will be applied to all such drops - so, to replace spider eyes with, say fermented spider eyes, one listing does for all spider types, and string is unaffected.
 
 http://dev.bukkit.org/bukkit-plugins/mob-drop-stopper/
+
+This is under the Academic Free License 3.0:
+http://opensource.org/licenses/AFL-3.0
