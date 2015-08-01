@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Creature;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -60,17 +62,21 @@ public class DropStopper extends JavaPlugin implements Listener {
     
     @EventHandler
     public void onLootDropped(EntityDeathEvent event) {
-        List<ItemStack> drops    = event.getDrops();
-        List<ItemStack> removals = new ArrayList<ItemStack>();
-        for(ItemStack drop : drops) {
-            Material item = drop.getType();
-            if((replacements.containsKey(item))) {
-                drop.setType(replacements.get(item));
+        if(event.getEntity() instanceof Player) {
+            return;
+        } else if(event.getEntity() instanceof Creature) {
+            List<ItemStack> drops    = event.getDrops();
+            List<ItemStack> removals = new ArrayList<ItemStack>();
+            for(ItemStack drop : drops) {
+                Material item = drop.getType();
+                if((replacements.containsKey(item))) {
+                    drop.setType(replacements.get(item));
+                }
+                if(toRemove.contains(drop.getType())) {
+                    removals.add(drop);
+                }
             }
-            if(toRemove.contains(drop.getType())) {
-                removals.add(drop);
-            }
+            drops.removeAll(removals);
         }
-        drops.removeAll(removals);
     }
 }
