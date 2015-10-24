@@ -7,5 +7,6 @@ remove:
 # Items to replace, forma is:
 # original: replacement
 replace:
+    null: null
     
     
