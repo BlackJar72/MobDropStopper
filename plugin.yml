@@ -1,5 +1,19 @@
 ## YAML Template.
 name: MobDropStopper
 main: jaredbgreat.dropstopper.DropStopper
-version: 1.1.0
+version: 1.2.0
 description: Removes or replaces items in mob drops
+
+commands:
+  mobdropstopper:
+    aliases: [mds]
+    description: Master command for Mob Drop Stopper   
+    usage: mobdropstopper subcommand [...arguments...]
+    permission: mobdropstopper.mobdropstopper
+    permission-message: You do not have permission to reassign mob drops!
+    
+permissions:
+  mobdropstopper.mobdropstopper:
+    description: Needed to configure the MobDropStopper by in game command
+    default: op
+
