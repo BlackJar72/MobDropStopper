@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
  * @author jared
  */
 public class CommandHandler implements CommandExecutor {
-    DropStopper owner;
+    MobDropStopper owner;
     
     
-    CommandHandler(DropStopper owner) {
+    CommandHandler(MobDropStopper owner) {
         this.owner = owner;
     }
     
@@ -35,6 +35,7 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, 
                              String label, String[] args) {
+        //sender.sendMessage("MobDropStopper got message");
         boolean valid = false;
         if(!(sender instanceof Player))  {
             return false;
@@ -53,24 +54,28 @@ public class CommandHandler implements CommandExecutor {
         if(args[0].equals("REMOVE")) {
             if(args.length < 2) {
                 sender.sendMessage("Warning: item not specified; try " + label 
-                        + " remve [item]");
+                        + " remove [item]");
             } else {
                 valid = owner.addRemoval(args[1]);
+                sender.sendMessage("Removing " + args[2] 
+                        + " from future mob drops");
             }
             if(!valid) {
                 sender.sendMessage("Warning: " + args[1] + " is not a valid " + 
                         "item name from org.bukkit.Material!");
             }
         } else if(args[0].equals("REPLACE")) {
-            if(args.length < 3) {
+            if(args.length != 3) {
                 sender.sendMessage("Warning: item not specified; try " + label 
                         + " replace [item] [replacement]");
             } else {
                 valid = owner.addReplacement(args[1], args[2]);
+                sender.sendMessage("Replacing " + args[2] + " with " + args[3]
+                        + " in future mob drops");
             } 
             if(!valid) {
-                sender.sendMessage("Warning: " + args[1] + " or " + args[2] + " is not a valid " + 
-                        "item name from org.bukkit.Material!");
+                sender.sendMessage("Warning: " + args[1] + " or " + args[2] 
+                        + " is not a valid item name from org.bukkit.Material!");
             }           
         } else if(args[0].equals("ALLOW")) {
             if(args.length < 2) {
@@ -78,6 +83,8 @@ public class CommandHandler implements CommandExecutor {
                         + " allow [item]");
             } else {
                 valid = owner.allowDrop(args[1]);
+                sender.sendMessage("Returning " + args[2] 
+                        + " to future mob drops");
             }
             if(!valid) {
                 sender.sendMessage("Warning: " + args[1] + " is not a valid " + 
