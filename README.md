@@ -1,10 +1,11 @@
-***If someone skilled and experience and Bukkit programming would likt to take over this, I'm alreay tire of it -- well, more like sick of Bukkit's stange and finicky incosistencies in behavior.  It does fulfill and apparent niche not filled by other plugins, and should be able to reach a "mature" state quicky do to its small sized and intentionally limited scope -- I'm just sick of things that shouuld work or did work suddenly not working who knows what arcane technicaliy (a problem I never had with Forge may own indie projects).  So, if you can fix this to do what its suppsed to, you're welcome to it.***
+**This is a simple plugin which can remove or replace items dropped by mobs.** It was originally created for use with Cauldron servers and mods that replace vanilla items with modded ones (on some versions of Cauldron this will result in both the modded and vanilla drop rather than a replacement - for example cows dropping both raw hides and leather when only hides are intended). However, this could be used on other types of servers to removal of a certain mob drop is desired. Due to a bug it does not work on flying mobs.
 
-This is a simple plugin which can remove or replace items dropped by mobs.  It was originally created for use with Cauldron servers and mods that replace vanilla items with modded ones (on some versions of Cauldron this will result in both the modded and vanilla drop rather than a replacement - for example cows dropping both raw hides and leather when only hides are intended).  However, this could be used on other types of servers to removal of a certain mob drop is desired.  Any number of items may be removed or dropped based on the config - don't want gunpower on your server?  You can prevent it from ever dropping.  Want to take out ghast tears from UHC?  Done!  Or replace them with gold nuggests!
+***This plugin is dead* and will there will be no further development,** because frankly I don't like Bukkit - it seems to be the thing everyone used because there wasn't anything better for server-side-only plugins at the time, and then kept using because of the time / effort / code already invested (i.e., to avoid starting over). However, so far I'm just not impressed, it seems clunky, buggy, limiting, and even non-deterministic. Add that the spiteful GPL fanatic (who could have simply offered a less restrictive license) has already killed it as far ad further development is concerned ... no point in boarding a sinking shift. I'll be going back to forge and to working on my own games instead. Sorry, I just don't feel like putting time into Bukkit stuff in the forseeable future.
 
-Unlike some plugins that work by mob, this works by the drop.  List the items you don't want dropped, or the remove/replace pairs, and it will be applied to all such drops - so, to replace spider eyes with, say fermented spider eyes, one listing does for all spider types, and string is unaffected.
+(Note, there may already be an improved version in GitHub, if someone can compiling into a properly working artifact.)
 
 http://dev.bukkit.org/bukkit-plugins/mob-drop-stopper/
 
-This is under the Academic Free License 3.0:
-http://opensource.org/licenses/AFL-3.0
+MobDropStopper by is now licensed under a Creative Commons Attribution 4.0 International License: http://creativecommons.org/licenses/by/4.0/
+
+
