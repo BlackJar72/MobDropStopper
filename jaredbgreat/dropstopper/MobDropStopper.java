@@ -72,7 +72,8 @@ public class MobDropStopper extends JavaPlugin  {
     
     
     boolean addRemoval(String item) {
-        Material toAdd = Material.getMaterial(item);
+        allowDrop(item);
+        Material toAdd = Material.getMaterial(item.toUpperCase());
         if(toAdd == null) {
             return false;
         }
@@ -82,8 +83,9 @@ public class MobDropStopper extends JavaPlugin  {
     
     
     boolean addReplacement(String item1, String item2) {
-        Material toReplace = Material.getMaterial(item1);
-        Material replacement = Material.getMaterial(item2);
+        allowDrop(item1);
+        Material toReplace = Material.getMaterial(item1.toUpperCase());
+        Material replacement = Material.getMaterial(item2.toUpperCase());
         if(toReplace == null || replacement == null) {
             return false;
         }
@@ -93,12 +95,12 @@ public class MobDropStopper extends JavaPlugin  {
     
     
     boolean allowDrop(String item) {
-        Material toAllow = Material.getMaterial(item);
+        Material toAllow = Material.getMaterial(item.toUpperCase());
         if(toAllow == null) {
             return false;
         }
         toRemove.remove(toAllow);
-        replacements.put(toAllow, toAllow);
+        replacements.remove(toAllow);
         return true;
     }
     
@@ -134,7 +136,7 @@ public class MobDropStopper extends JavaPlugin  {
     
     
     // Not yet implemented -- or fully planned
-    void loadMyConfig() {/*  //
+    void loadMyConfig() {
         try {
             YamlConfiguration config = new YamlConfiguration();
             config.set("remove", makeStringList());
@@ -143,5 +145,5 @@ public class MobDropStopper extends JavaPlugin  {
         } catch (IOException ex) {
             Logger.getLogger(MobDropStopper.class.getName()).log(Level.SEVERE, null, ex);
         }
-    */}
+    }
 }

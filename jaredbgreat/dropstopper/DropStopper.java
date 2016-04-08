@@ -3,8 +3,8 @@ package jaredbgreat.dropstopper;
 import java.util.ArrayList;
 import java.util.List;
 import org.bukkit.Material;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Vehicle;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
@@ -25,9 +25,8 @@ public class DropStopper implements Listener {
     
     @EventHandler
     public void onLootDropped(EntityDeathEvent event) {
-        if(event.getEntity() instanceof Player) {
-            return;
-        } else if(event.getEntity() instanceof LivingEntity) {
+        if(!((event.getEntity() instanceof Player)
+                || (event.getEntity() instanceof Vehicle))) {
             List<ItemStack> drops    = event.getDrops();
             List<ItemStack> removals = new ArrayList<ItemStack>();
             for(ItemStack drop : drops) {  

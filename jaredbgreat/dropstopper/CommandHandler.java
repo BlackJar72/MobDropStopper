@@ -35,14 +35,10 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, 
                              String label, String[] args) {
-        //sender.sendMessage("MobDropStopper got message");
         boolean valid = false;
-        if(!(sender instanceof Player))  {
-            return false;
-        }
         
         if(args.length < 1) {
-                   sender.sendMessage("Warning: mobdropstopper reuqires arguments!");
+                   sender.sendMessage("Warning: mobdropstopper requires arguments!");
                    giveHelp((Player)sender);
                    return false;
                }
@@ -51,53 +47,53 @@ public class CommandHandler implements CommandExecutor {
             args[i] = args[i].toUpperCase();
         }
         
-        if(args[0].equals("REMOVE")) {
+        if(args[0].toUpperCase().equals("REMOVE")) {
             if(args.length < 2) {
                 sender.sendMessage("Warning: item not specified; try " + label 
                         + " remove [item]");
             } else {
                 valid = owner.addRemoval(args[1]);
-                sender.sendMessage("Removing " + args[2] 
+                sender.sendMessage("Removing " + args[1] 
                         + " from future mob drops");
             }
             if(!valid) {
                 sender.sendMessage("Warning: " + args[1] + " is not a valid " + 
                         "item name from org.bukkit.Material!");
             }
-        } else if(args[0].equals("REPLACE")) {
+        } else if(args[0].toUpperCase().equals("REPLACE")) {
             if(args.length != 3) {
                 sender.sendMessage("Warning: item not specified; try " + label 
                         + " replace [item] [replacement]");
             } else {
                 valid = owner.addReplacement(args[1], args[2]);
-                sender.sendMessage("Replacing " + args[2] + " with " + args[3]
+                sender.sendMessage("Replacing " + args[1] + " with " + args[2]
                         + " in future mob drops");
             } 
             if(!valid) {
                 sender.sendMessage("Warning: " + args[1] + " or " + args[2] 
                         + " is not a valid item name from org.bukkit.Material!");
             }           
-        } else if(args[0].equals("ALLOW")) {
+        } else if(args[0].toUpperCase().equals("ALLOW")) {
             if(args.length < 2) {
                 sender.sendMessage("Warning: item not specified; try " + label 
                         + " allow [item]");
             } else {
                 valid = owner.allowDrop(args[1]);
-                sender.sendMessage("Returning " + args[2] 
+                sender.sendMessage("Returning " + args[1] 
                         + " to future mob drops");
             }
             if(!valid) {
                 sender.sendMessage("Warning: " + args[1] + " is not a valid " + 
                         "item name from org.bukkit.Material!");
             }
-        } else if(args[0].equals("HELP")) {
+        } else if(args[0].toUpperCase().equals("HELP")) {
             giveHelp((Player)sender);
             valid = true;
-        } else if(args[0].equals("SAVE") || args[0].equals("COMMIT")) {
+        } else if(args[0].toUpperCase().equals("SAVE") || args[0].equals("COMMIT")) {
             owner.saveMyConfig();
             sender.sendMessage("MobDropStopper config saved");
             valid = true;
-        } else if(args[0].equals("RELOAD")) {
+        } else if(args[0].toUpperCase().equals("RELOAD")) {
             owner.reloadConfig();
             owner.configure();
             sender.sendMessage("MobDropStopper config reloaded " 

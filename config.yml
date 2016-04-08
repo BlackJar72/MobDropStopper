@@ -3,8 +3,6 @@
 # values can be found at: 
 # https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
 remove: 
-    - null
 # Items to replace, format is:
 # original: replacement
 replace:
-    null: null
